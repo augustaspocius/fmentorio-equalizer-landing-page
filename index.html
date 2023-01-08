@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet">
   
   <title>Frontend Mentor | Equalizer landing page</title>
-  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
       <main>
@@ -51,16 +51,19 @@
       </main>
           
       <footer>
-        <section class="copyright">
-          <object class="logo" data="assets/logo.svg" type="image/svg+xml"></object>
-          <p>All rights reserved © Equalizer 2021</p>
-          <p>Have any problems? Contact us via social media or email us at <address>equalizer@example.com</address></p>
-        </section>
-        <div class="socials">
-          <a href="#"><object class="social" data="assets/icon-facebook.svg" type="image/svg+xml"></object></a>
-          <a href="#"><object class="social" data="assets/icon-instagram.svg" type="image/svg+xml"></object></a>
-          <a href="#"><object class="social" data="assets/icon-twitter.svg" type="image/svg+xml"></object></a>
+        
+        <div class="footer">
+          <section class="footer__copyright">
+            <object class="footer__copyright__logo" data="assets/logo.svg" type="image/svg+xml"></object>
+            <p class="footer__copyright__allrights">All rights reserved © Equalizer 2021</p>
+            <p class="footer__copyright__emailus">Have any problems? Contact us via social media or email us at <span class="footer__copyright__address">equalizer@example.com</span></p>
+          </section>
+          <div class="footer__socials">
+            <img class="footer__socials__link" src="assets/icon-facebook.svg"></img>
+            <img class="footer__socials__link" src="assets/icon-instagram.svg"></img>
+            <img class="footer__socials__link" src="assets/icon-twitter.svg"></img>
           
+          </div>
         </div>
       </footer>
 </body>
