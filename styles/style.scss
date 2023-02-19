@@ -85,13 +85,20 @@ body {
     font-weight: var(--fw-regular);
     color: var(--clr-neutral-900);
     background-color: var(--clr-neutral-100);
-    --content-padding: 1.5rem;
     display: grid;
-
+    
+    --content-padding: 1.5rem;
     background-image: url(/assets/bg-pattern-1.svg), url(/assets/bg-main-tablet.png);
     background-position: right -40px top -40px, right -100px top -250px;
     background-size: 270px, auto;
     background-repeat: no-repeat;
+}
+
+.container {
+    --max-width: 1110px;
+
+    width: min(var(--max-width), 100% - (var(--content-padding) * 2));
+    margin-inline: auto;
 }
 
 .btn {
@@ -127,22 +134,22 @@ body {
 .product {
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.75fr 1fr 1fr 1fr 1fr;
-    padding: 0 var(--content-padding);
+    grid-template-columns: minmax(auto, 64px) auto auto min-content minmax(auto, 50px);
+    grid-template-rows: 0.75fr 1fr 1.3fr 1fr 1fr;
+    padding: 0;
 
     &__intro {
         display: grid;
         gap: 2rem;
-        padding: 2rem var(--content-padding) 3rem var(--content-padding);
+        padding: 2rem 0 3rem 0;
 
-        &__title {
+        &-title {
             font-size: 2.5rem;
             line-height: 3rem;
             padding: 2rem 0 0 0;
         }
 
-        &__description {
+        &-description {
             line-height: 1.625rem;
         }
     }
@@ -152,7 +159,6 @@ body {
         grid-area: 2 / 1 / 5 / 6;
         background-color: var(--clr-neutral-900);
         background-image: url('/assets/bg-pattern-2.svg');
-        background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 280px 420px;
@@ -171,7 +177,7 @@ body {
     &__about {
         display: flex;
         flex-direction: column;
-        justify-content: baseline;
+        justify-content: space-between;
         z-index: 3;
         font-size: 1.125rem;
         grid-area: 3 / 4 / 6 / 5;
@@ -179,24 +185,23 @@ body {
         max-width: 446px;
         min-height: 546px;
         max-height: 625px;
-        padding: 2.25rem;
+        padding: 3rem;
         border-radius: var(--br-regular);
         color: var(--clr-neutral-100);
         background-color: var(--clr-darkorange);
 
-        &__title {
+        &-title {
             font-size: 2rem;
-            padding: 1rem 0 1rem 0;
         }
 
-        &__pricing {
+        &-pricing {
             display: flex;
             align-items: center;
             gap: 1rem;
             padding: 0.75rem 0;
         }
 
-        &__pricing__price {
+        &-price {
             font-weight: var(--fw-bold);
             font-size: 4.0625rem;
         }
@@ -219,15 +224,10 @@ body {
 
     &__copyright {
         display: grid;
-        padding: 3rem var(--content-padding) 4rem var(--content-padding);
+        padding: 3rem 0 4rem 0;
 
-        &__logo {
+        &-logo {
             padding-bottom: 2rem;
-        }
-
-        &__address {
-            font-style: normal;
-            font-weight: var(--fw-bold);
         }
     }
 
@@ -236,13 +236,13 @@ body {
         align-items: center;
         justify-content: flex-start;
         gap: 1.25rem;
-        padding: 0 var(--content-padding) 4rem var(--content-padding);
+        padding: 0 0 4rem 0;
         
-        &__link{
+        &-link{
             cursor: pointer;
         }
         
-        &__link:hover{
+        &-link:hover{
             filter: invert(1) hue-rotate(328deg) saturate(100);   
         }
     }
@@ -252,9 +252,13 @@ body {
     body {
         background-image: url(/assets/bg-main-mobile.png);
         background-size: cover;
-        background-position: 1rem -17rem;
+        background-position: -4rem -25rem;
+    } 
+    
+    .container.product {
+        width: 100%;
     }
-
+    
     .product {
         grid-template-columns: auto;
         grid-template-rows: 5rem auto auto auto;
@@ -277,17 +281,17 @@ body {
 
         &__about {
             max-width: 628px;
-
             grid-area: 3 / 1 / 5 / 2;
+            
+            &-title {
+                padding: 0 0 1rem 0;
+            }
+    
         }
     }
 
     .footer {
         flex-direction: column;
-
-        &__copyright__address {
-            display: block;
-        }
     }
 }
 
@@ -300,10 +304,8 @@ body {
 
     .product {
         grid-template-columns: minmax(auto, 64px) auto auto min-content minmax(auto, 58px);
-        padding: 0 2.0625rem;
         
         &__backdrop {
-            // max-width: 696px;
             max-height: 600px;
             
             background-position: center -2.5rem;
@@ -317,30 +319,28 @@ body {
             
             min-height: 556px;
             max-height: 642px;
-            // grid-area: 1 / 2 / 4 / 4;
             grid-area: 1 / 2 / 4 / 3;
         }
 
         &__about {
             min-width: 400px;
             min-height: 546px;
-            // grid-area: 3 / 3 / 6 / 5;
             grid-area: 3 / 4 / 6 / 5;
         }
 
         &__intro {
-            padding: 2rem var(--content-padding) 7rem var(--content-padding);
-            &__logo {
+            padding: 2rem 0 7rem 0;
+            &-logo {
                 padding: 2rem 0 0 0;
             }
 
-            &__title {
+            &-title {
                 font-size: 4rem;
                 line-height: 4rem;
                 width: 68%;
             }
 
-            &__description {
+            &-description {
                 font-size: 1.125rem;
                 line-height: 1.75rem;
                 width: 74%;
@@ -349,7 +349,6 @@ body {
     }
 
     .footer {
-        padding: 0 var(--content-padding);
         justify-content: space-between;
 
         &__copyright {
@@ -367,22 +366,22 @@ body {
 @media only screen and (min-width: 992px) {
     body {
         background-image: url(/assets/bg-pattern-1.svg), url(/assets/bg-main-desktop.png);
-        background-position: right 0 top -40px, right -200px top -250px;
-        background-size: auto, cover;
+        background-position: right 0 top -40px, left -200px top -260px;
+        background-size: auto, 125%;
     }
 
     .product {
-        grid-template-columns: minmax(auto, 102px) max-content minmax(155px, aut) max-content minmax(auto, 95px);
-        grid-template-rows: 0.75fr 1fr 1fr 1fr 1fr;
-        padding: 0 var(--content-padding);
+        grid-template-columns: minmax(auto, 102px) max-content minmax(auto, 155px) max-content minmax(auto, 95px);
+        grid-template-rows: minmax(auto, 213px) minmax(auto, 90px) minmax(auto, 339px) minmax(auto, 171px) minmax(auto, 115px);
         
         &__backdrop {
-            background-position: 17rem top;
+            background-position: 19.5rem -2rem;
             padding: 0 2rem;
             grid-area: 2 / 1 / 5 / 6;
         }
 
         &__image {
+            position: relative;
             box-sizing: content-box;
             max-width: 312px;
             max-height: 642px;
@@ -397,14 +396,14 @@ body {
         }
         
         &__intro {
-            &__title {
+            &-title {
                 font-size: 5.5rem;
                 line-height: 5.5rem;
                 padding: 6rem 0 0 0;
                 width: 78%;
             }
 
-            &__description {
+            &-description {
                 font-size: 1.25rem;
                 line-height: 2.125rem;
                 width: 75%;
@@ -414,9 +413,6 @@ body {
 }
 
 @media only screen and (min-width: 1400px) {
-    body{
-        --content-padding: 10.3125rem;
-    }
     
     .footer {
         &__copyright {
@@ -426,16 +422,16 @@ body {
             grid-template-areas: "logo allrights"
                                  "logo emailus";
                                  
-            &__logo {
+            &-logo {
                 grid-area: logo;
                 padding-bottom: 2rem;
             }
             
-            &__allrights {
+            &-allrights {
                 grid-area: allrights;
             }
             
-            &__emailus {
+            &-emailus {
                 grid-area: emailus;
             }
         }

@@ -82,13 +82,18 @@ body {
   font-weight: var(--fw-regular);
   color: var(--clr-neutral-900);
   background-color: var(--clr-neutral-100);
-  --content-padding: 1.5rem;
-  /* place-content: center; */
   display: grid;
+  --content-padding: 1.5rem;
   background-image: url(/assets/bg-pattern-1.svg), url(/assets/bg-main-tablet.png);
   background-position: right -40px top -40px, right -100px top -250px;
   background-size: 270px, auto;
   background-repeat: no-repeat;
+}
+
+.container {
+  --max-width: 1110px;
+  width: min(var(--max-width), 100% - var(--content-padding) * 2);
+  margin-inline: auto;
 }
 
 .btn {
@@ -98,7 +103,6 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
-  /* add Padding to the button */
   padding: 1rem 2rem;
   border-radius: 0.75rem;
 }
@@ -122,21 +126,21 @@ body {
 .product {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.75fr 1fr 1fr 1fr 1fr;
-  padding: 0 var(--content-padding);
+  grid-template-columns: minmax(auto, 64px) auto auto min-content minmax(auto, 50px);
+  grid-template-rows: 0.75fr 1fr 1.3fr 1fr 1fr;
+  padding: 0;
 }
 .product__intro {
   display: grid;
   gap: 2rem;
-  padding: 2rem var(--content-padding) 3rem var(--content-padding);
+  padding: 2rem 0 3rem 0;
 }
-.product__intro__title {
+.product__intro-title {
   font-size: 2.5rem;
   line-height: 3rem;
   padding: 2rem 0 0 0;
 }
-.product__intro__description {
+.product__intro-description {
   line-height: 1.625rem;
 }
 .product__backdrop {
@@ -144,7 +148,6 @@ body {
   grid-area: 2/1/5/6;
   background-color: var(--clr-neutral-900);
   background-image: url("/assets/bg-pattern-2.svg");
-  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 280px 420px;
@@ -161,7 +164,7 @@ body {
 .product__about {
   display: flex;
   flex-direction: column;
-  justify-content: baseline;
+  justify-content: space-between;
   z-index: 3;
   font-size: 1.125rem;
   grid-area: 3/4/6/5;
@@ -169,22 +172,21 @@ body {
   max-width: 446px;
   min-height: 546px;
   max-height: 625px;
-  padding: 2.25rem;
+  padding: 3rem;
   border-radius: var(--br-regular);
   color: var(--clr-neutral-100);
   background-color: var(--clr-darkorange);
 }
-.product__about__title {
+.product__about-title {
   font-size: 2rem;
-  padding: 1rem 0 1rem 0;
 }
-.product__about__pricing {
+.product__about-pricing {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 0;
 }
-.product__about__pricing__price {
+.product__about-price {
   font-weight: var(--fw-bold);
   font-size: 4.0625rem;
 }
@@ -204,34 +206,33 @@ body {
 }
 .footer__copyright {
   display: grid;
-  padding: 3rem var(--content-padding) 4rem var(--content-padding);
+  padding: 3rem 0 4rem 0;
 }
-.footer__copyright__logo {
+.footer__copyright-logo {
   padding-bottom: 2rem;
-}
-.footer__copyright__address {
-  font-style: normal;
-  font-weight: var(--fw-bold);
 }
 .footer__socials {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1.25rem;
-  padding: 0 var(--content-padding) 4rem var(--content-padding);
+  padding: 0 0 4rem 0;
 }
-.footer__socials__link {
+.footer__socials-link {
   cursor: pointer;
 }
-.footer__socials__link:hover {
+.footer__socials-link:hover {
   filter: invert(1) hue-rotate(328deg) saturate(100);
 }
 
 @media (max-width: 628px) {
   body {
     background-image: url(/assets/bg-main-mobile.png);
-    background-size: auto;
-    background-position: 1rem -17rem;
+    background-size: cover;
+    background-position: -4rem -25rem;
+  }
+  .container.product {
+    width: 100%;
   }
   .product {
     grid-template-columns: auto;
@@ -255,11 +256,11 @@ body {
     max-width: 628px;
     grid-area: 3/1/5/2;
   }
+  .product__about-title {
+    padding: 0 0 1rem 0;
+  }
   .footer {
     flex-direction: column;
-  }
-  .footer__copyright__address {
-    display: block;
   }
 }
 @media only screen and (min-width: 629px) {
@@ -270,7 +271,6 @@ body {
   }
   .product {
     grid-template-columns: minmax(auto, 64px) auto auto min-content minmax(auto, 58px);
-    padding: 0 2.0625rem;
   }
   .product__backdrop {
     max-height: 600px;
@@ -291,23 +291,22 @@ body {
     grid-area: 3/4/6/5;
   }
   .product__intro {
-    padding: 2rem var(--content-padding) 7rem var(--content-padding);
+    padding: 2rem 0 7rem 0;
   }
-  .product__intro__logo {
+  .product__intro-logo {
     padding: 2rem 0 0 0;
   }
-  .product__intro__title {
+  .product__intro-title {
     font-size: 4rem;
     line-height: 4rem;
     width: 68%;
   }
-  .product__intro__description {
+  .product__intro-description {
     font-size: 1.125rem;
     line-height: 1.75rem;
     width: 74%;
   }
   .footer {
-    padding: 0 var(--content-padding);
     justify-content: space-between;
   }
   .footer__copyright {
@@ -322,19 +321,20 @@ body {
 @media only screen and (min-width: 992px) {
   body {
     background-image: url(/assets/bg-pattern-1.svg), url(/assets/bg-main-desktop.png);
-    background-position: right 0 top -40px, right -200px top -250px;
+    background-position: right 0 top -40px, left -200px top -260px;
+    background-size: auto, 125%;
   }
   .product {
-    grid-template-columns: minmax(auto, 102px) max-content minmax(155px, aut) max-content minmax(auto, 95px);
-    grid-template-rows: 0.75fr 1fr 1fr 1fr 1fr;
-    padding: 0 var(--content-padding);
+    grid-template-columns: minmax(auto, 102px) max-content minmax(auto, 155px) max-content minmax(auto, 95px);
+    grid-template-rows: minmax(auto, 213px) minmax(auto, 90px) minmax(auto, 339px) minmax(auto, 171px) minmax(auto, 115px);
   }
   .product__backdrop {
-    background-position: 17rem top;
+    background-position: 19.5rem -2rem;
     padding: 0 2rem;
     grid-area: 2/1/5/6;
   }
   .product__image {
+    position: relative;
     box-sizing: content-box;
     max-width: 312px;
     max-height: 642px;
@@ -345,36 +345,33 @@ body {
     max-height: 625px;
     grid-area: 3/4/6/5;
   }
-  .product__intro__title {
+  .product__intro-title {
     font-size: 5.5rem;
     line-height: 5.5rem;
     padding: 6rem 0 0 0;
     width: 78%;
   }
-  .product__intro__description {
+  .product__intro-description {
     font-size: 1.25rem;
     line-height: 2.125rem;
     width: 75%;
   }
 }
 @media only screen and (min-width: 1400px) {
-  body {
-    --content-padding: 10.3125rem;
-  }
   .footer__copyright {
     max-width: 60%;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-areas: "logo allrights" "logo emailus";
   }
-  .footer__copyright__logo {
+  .footer__copyright-logo {
     grid-area: logo;
     padding-bottom: 2rem;
   }
-  .footer__copyright__allrights {
+  .footer__copyright-allrights {
     grid-area: allrights;
   }
-  .footer__copyright__emailus {
+  .footer__copyright-emailus {
     grid-area: emailus;
   }
 }
