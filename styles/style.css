@@ -123,25 +123,26 @@ body {
   background-color: var(--clr-orange);
 }
 
+.product-intro {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem 0 3rem 0;
+}
+.product-intro__title {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  padding: 2rem 0 0 0;
+}
+.product-intro__description {
+  line-height: 1.625rem;
+}
+
 .product {
   position: relative;
   display: grid;
   grid-template-columns: minmax(auto, 64px) auto auto min-content minmax(auto, 50px);
   grid-template-rows: 0.75fr 1fr 1.3fr 1fr 1fr;
   padding: 0;
-}
-.product__intro {
-  display: grid;
-  gap: 2rem;
-  padding: 2rem 0 3rem 0;
-}
-.product__intro-title {
-  font-size: 2.5rem;
-  line-height: 3rem;
-  padding: 2rem 0 0 0;
-}
-.product__intro-description {
-  line-height: 1.625rem;
 }
 .product__backdrop {
   background-origin: content-box;
@@ -269,6 +270,22 @@ body {
     background-repeat: no-repeat;
     --content-padding: 2.4375rem;
   }
+  .product-intro {
+    padding: 2rem 0 7rem 0;
+  }
+  .product-intro__logo {
+    padding: 2rem 0 0 0;
+  }
+  .product-intro__title {
+    font-size: 4rem;
+    line-height: 4rem;
+    width: 68%;
+  }
+  .product-intro__description {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    width: 74%;
+  }
   .product {
     grid-template-columns: minmax(auto, 64px) auto auto min-content minmax(auto, 58px);
   }
@@ -290,22 +307,6 @@ body {
     min-height: 546px;
     grid-area: 3/4/6/5;
   }
-  .product__intro {
-    padding: 2rem 0 7rem 0;
-  }
-  .product__intro-logo {
-    padding: 2rem 0 0 0;
-  }
-  .product__intro-title {
-    font-size: 4rem;
-    line-height: 4rem;
-    width: 68%;
-  }
-  .product__intro-description {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    width: 74%;
-  }
   .footer {
     justify-content: space-between;
   }
@@ -323,6 +324,17 @@ body {
     background-image: url(/assets/bg-pattern-1.svg), url(/assets/bg-main-desktop.png);
     background-position: right 0 top -40px, left -200px top -260px;
     background-size: auto, 125%;
+  }
+  .product-intro__title {
+    font-size: 5.5rem;
+    line-height: 5.5rem;
+    padding: 6rem 0 0 0;
+    width: 78%;
+  }
+  .product-intro__description {
+    font-size: 1.25rem;
+    line-height: 2.125rem;
+    width: 75%;
   }
   .product {
     grid-template-columns: minmax(auto, 102px) max-content minmax(auto, 155px) max-content minmax(auto, 95px);
@@ -344,17 +356,6 @@ body {
     max-width: 446px;
     max-height: 625px;
     grid-area: 3/4/6/5;
-  }
-  .product__intro-title {
-    font-size: 5.5rem;
-    line-height: 5.5rem;
-    padding: 6rem 0 0 0;
-    width: 78%;
-  }
-  .product__intro-description {
-    font-size: 1.25rem;
-    line-height: 2.125rem;
-    width: 75%;
   }
 }
 @media only screen and (min-width: 1400px) {

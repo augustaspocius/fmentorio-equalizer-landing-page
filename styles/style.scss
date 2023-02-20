@@ -131,29 +131,29 @@ body {
     }
 }
 
+.product-intro {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem 0 3rem 0;
+
+    &__title {
+        font-size: 2.5rem;
+        line-height: 3rem;
+        padding: 2rem 0 0 0;
+    }
+
+    &__description {
+        line-height: 1.625rem;
+    }
+}
+
 .product {
     position: relative;
     display: grid;
     grid-template-columns: minmax(auto, 64px) auto auto min-content minmax(auto, 50px);
     grid-template-rows: 0.75fr 1fr 1.3fr 1fr 1fr;
     padding: 0;
-
-    &__intro {
-        display: grid;
-        gap: 2rem;
-        padding: 2rem 0 3rem 0;
-
-        &-title {
-            font-size: 2.5rem;
-            line-height: 3rem;
-            padding: 2rem 0 0 0;
-        }
-
-        &-description {
-            line-height: 1.625rem;
-        }
-    }
-
+    
     &__backdrop {
         background-origin: content-box;
         grid-area: 2 / 1 / 5 / 6;
@@ -189,22 +189,22 @@ body {
         border-radius: var(--br-regular);
         color: var(--clr-neutral-100);
         background-color: var(--clr-darkorange);
+    }
+    
+    &__about-title {
+        font-size: 2rem;
+    }
 
-        &-title {
-            font-size: 2rem;
-        }
+    &__about-pricing {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem 0;
+    }
 
-        &-pricing {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem 0;
-        }
-
-        &-price {
-            font-weight: var(--fw-bold);
-            font-size: 4.0625rem;
-        }
+    &__about-price {
+        font-weight: var(--fw-bold);
+        font-size: 4.0625rem;
     }
 }
 
@@ -226,9 +226,10 @@ body {
         display: grid;
         padding: 3rem 0 4rem 0;
 
-        &-logo {
-            padding-bottom: 2rem;
-        }
+    }
+    
+    &__copyright-logo {
+        padding-bottom: 2rem;
     }
 
     &__socials {
@@ -237,12 +238,11 @@ body {
         justify-content: flex-start;
         gap: 1.25rem;
         padding: 0 0 4rem 0;
-        
-        &-link{
-            cursor: pointer;
-        }
-        
-        &-link:hover{
+    }
+    
+    &__socials-link{
+        cursor: pointer;
+        &:hover{
             filter: invert(1) hue-rotate(328deg) saturate(100);   
         }
     }
@@ -281,12 +281,11 @@ body {
 
         &__about {
             max-width: 628px;
-            grid-area: 3 / 1 / 5 / 2;
-            
-            &-title {
-                padding: 0 0 1rem 0;
-            }
-    
+            grid-area: 3 / 1 / 5 / 2;            
+        }
+        
+        &__about-title {
+            padding: 0 0 1rem 0;
         }
     }
 
@@ -300,6 +299,25 @@ body {
         background-position: right -40px top -40px, right -100px top -250px;
         background-repeat: no-repeat;
         --content-padding: 2.4375rem;
+    }
+    
+    .product-intro {
+        padding: 2rem 0 7rem 0;
+        &__logo {
+            padding: 2rem 0 0 0;
+        }
+
+        &__title {
+            font-size: 4rem;
+            line-height: 4rem;
+            width: 68%;
+        }
+
+        &__description {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            width: 74%;
+        }
     }
 
     .product {
@@ -328,24 +346,6 @@ body {
             grid-area: 3 / 4 / 6 / 5;
         }
 
-        &__intro {
-            padding: 2rem 0 7rem 0;
-            &-logo {
-                padding: 2rem 0 0 0;
-            }
-
-            &-title {
-                font-size: 4rem;
-                line-height: 4rem;
-                width: 68%;
-            }
-
-            &-description {
-                font-size: 1.125rem;
-                line-height: 1.75rem;
-                width: 74%;
-            }
-        }
     }
 
     .footer {
@@ -368,6 +368,21 @@ body {
         background-image: url(/assets/bg-pattern-1.svg), url(/assets/bg-main-desktop.png);
         background-position: right 0 top -40px, left -200px top -260px;
         background-size: auto, 125%;
+    }
+    
+    .product-intro {
+        &__title {
+            font-size: 5.5rem;
+            line-height: 5.5rem;
+            padding: 6rem 0 0 0;
+            width: 78%;
+        }
+
+        &__description {
+            font-size: 1.25rem;
+            line-height: 2.125rem;
+            width: 75%;
+        }
     }
 
     .product {
@@ -395,20 +410,6 @@ body {
             grid-area: 3 / 4 / 6 / 5;
         }
         
-        &__intro {
-            &-title {
-                font-size: 5.5rem;
-                line-height: 5.5rem;
-                padding: 6rem 0 0 0;
-                width: 78%;
-            }
-
-            &-description {
-                font-size: 1.25rem;
-                line-height: 2.125rem;
-                width: 75%;
-            }
-        }
     }
 }
 
@@ -422,19 +423,20 @@ body {
             grid-template-areas: "logo allrights"
                                  "logo emailus";
                                  
-            &-logo {
-                grid-area: logo;
-                padding-bottom: 2rem;
-            }
-            
-            &-allrights {
-                grid-area: allrights;
-            }
-            
-            &-emailus {
-                grid-area: emailus;
-            }
         }
-    
+        
+        &__copyright-logo {
+            grid-area: logo;
+            padding-bottom: 2rem;
+        }
+        
+        &__copyright-allrights {
+            grid-area: allrights;
+        }
+        
+        &__copyright-emailus {
+            grid-area: emailus;
+        }
+
     }
 }
